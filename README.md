@@ -1,66 +1,47 @@
 # Codveda Full Stack Development Internship
 
-## About This Project
+## About
 
-This repository contains my work during the Codveda Technologies Full Stack Development Internship.
+This repository documents my progress during the Codveda Technologies Full Stack Development Internship.
 
-I started this project by setting up my development environment and making sure I had the tools needed to begin building full-stack applications.
+For my first task, I focused on setting up my development environment and getting the tools I need for full-stack development working together.
 
-My main focus for this task was getting Node.js, Git, GitHub and MySQL working together. I also wanted to understand how a Node.js application communicates with a database rather than just installing the tools without knowing what they do.
+I wanted to understand the setup process properly, from running my first JavaScript file to connecting a Node.js application to a MySQL database.
 
-## Tools I Used
+## Technologies Used
 
-- **Node.js** – To run JavaScript outside the browser.
-- **npm** – To install and manage project packages.
-- **Cursor** – My code editor.
-- **Git** – To track changes in my project.
-- **GitHub** – To store and manage my code online.
-- **MySQL 8.0** – To create and manage my database.
-- **mysql2** – To connect Node.js to MySQL.
-- **dotenv** – To keep database configuration in environment variables.
+- **Node.js** – Running JavaScript outside the browser.
+- **npm** – Managing project dependencies.
+- **Cursor** – Writing and managing my code.
+- **Git** – Tracking changes and managing versions.
+- **GitHub** – Hosting my project.
+- **MySQL 8.0** – Managing the database.
+- **mysql2** – Connecting Node.js to MySQL.
+- **dotenv** – Managing database configuration securely.
 
-## Getting Started
+## Setting Up the Project
 
-I created a project folder called `Codveda-Full-Stack` and initialised it as a Node.js project.
+I started by creating a project directory called `Codveda-Full-Stack` and initialising it as a Node.js project.
 
-I first tested Node.js by creating a simple `app.js` file:
+To make sure Node.js was working, I created a simple `app.js` file and ran it from the terminal.
 
-```
-console.log("Hello Codveda!");
-console.log("My Full Stack Development journey starts here.");
-```
+The application printed:
 
-I ran the file using:
+Hello Codveda!
 
-```
-node app.js
-```
+My Full Stack Development journey starts here.
 
-After confirming that it worked, I initialised npm and installed the packages needed for database connectivity.
+After that, I initialised npm and installed the packages required for database connectivity.
 
-## MySQL Database Setup
+## Working with MySQL
 
-I installed MySQL 8.0 and created a database called `codveda_db`.
+I installed MySQL 8.0 and created a database named `codveda_db`.
 
-The SQL command I used was:
+I then installed the `mysql2` package to allow my Node.js application to communicate with the database.
 
-```
-CREATE DATABASE codveda_db;
-```
+I created a separate `db.js` file to test the connection. After configuring the database credentials using `dotenv`, I successfully connected to MySQL and retrieved the server version.
 
-I then installed `mysql2` so that my Node.js application could communicate with MySQL.
-
-I also installed `dotenv` to manage my database credentials separately from my JavaScript code.
-
-## Testing the Database Connection
-
-One of the important parts of this task was testing whether Node.js could actually connect to my MySQL database.
-
-I created a `db.js` file and used it to establish the connection.
-
-I successfully connected to MySQL and retrieved the database server version.
-
-This helped me understand how a backend application communicates with a database.
+Getting this connection to work was an important part of the task because it gave me practical experience with how Node.js and MySQL interact.
 
 ## Project Structure
 
@@ -75,103 +56,38 @@ Codveda-Full-Stack/
 └── README.md
 ```
 
-The `.env` file is stored locally and is not included in the GitHub repository.
+The `.env` file is kept locally and excluded from the repository because it contains database credentials.
 
-## Running the Project
+The `node_modules` directory is also excluded because project dependencies can be installed again through npm.
 
-If you want to run this project on your own computer:
+## Git and GitHub
 
-**1. Clone the repository**
+I initialised Git in my project directory, tracked my files and created an initial commit.
 
-```
-git clone https://github.com/semahle2000/Codveda-Full-Stack.git
-```
+I then created a GitHub repository and pushed my project to it.
 
-**2. Open the project folder**
+I also configured `.gitignore` to prevent sensitive credentials and unnecessary dependency files from being uploaded.
 
-```
-cd Codveda-Full-Stack
-```
+**Repository:** [hodveda-Full-Stttps://github.com/semahle2000/Codveda-Full-StackC](https://github.com/semahle2000/Codveda-Full-Stack) 
 
-**3. Install the dependencies**
+## What I Took Away From This Task
 
-```
-npm install
-```
+This task gave me a practical introduction to preparing a development environment for full-stack development.
 
-**4. Create a MySQL database**
+I worked with Node.js and npm, learned how to manage a project using Git, published my code on GitHub and connected a Node.js application to MySQL.
 
-```
-CREATE DATABASE codveda_db;
-```
+I also became more familiar with environment variables and the importance of keeping database credentials out of a public repository.
 
-**5. Create a** `.env` **file**
+Although this was an environment setup task, it gave me a foundation to build on as I move towards developing backend applications and working with databases.
 
-Add your own MySQL configuration:
+## Internship Information
 
-```
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=mysql_password
-DB_NAME=codveda_db
-```
+**Organisation:** Codveda Technologies
 
+**Programme:** Full Stack Development Internship
 
+**Level:** Level 1
 
-**6. Run the application**
-
-```
-node app.js
-```
-
-To test the database connection:
-
-```
-node db.js
-```
-
-## GitHub and Project Security
-
-I used Git to track my project changes and pushed the repository to GitHub.
-
-I also created a `.gitignore` file containing:
-
-```
-.env
-node_modules/
-```
-
-This ensures that my database credentials and installed dependencies are not uploaded to GitHub.
-
-## What I Learned
-
-Working through this task gave me practical experience with setting up a development environment.
-
-I learned how to:
-
-- Install and verify Node.js and npm.
-- Initialise and manage a Node.js project.
-- Install packages using npm.
-- Use Git to track changes.
-- Create and manage a GitHub repository.
-- Create a MySQL database.
-- Connect a Node.js application to MySQL.
-- Use environment variables to protect database credentials.
-- Exclude unnecessary files from GitHub.
-
-I also gained a better understanding of how the different tools used in full-stack development work together.
-
-## Internship Details
-
-**Organisation:** Codveda Technologies  
-**Programme:** Full Stack Development Internship  
-**Level:** Level 1  
 **Task:** Task 1 – Setup Development Environment
 
-**GitHub Repository:**  
-[https://github.com/semahle2000/Codveda-Full-Stack](https://github.com/semahle2000/Codveda-Full-Stack)
-
-
-
-This is my starting point in the Codveda Full Stack Development Internship. I look forward to building on this foundation as I work through the next tasks.
-
+This is the beginning of my journey with Codveda Technologies. I'm looking forward to applying what I've learned and improving my development skills through the upcoming tasks.
