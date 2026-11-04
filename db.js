@@ -1,32 +1,15 @@
 require("dotenv").config();
 
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 5,
+    queueLimit: 0
 });
 
-connection.connect((error) => {
-    if (error) {
-        console.error("Connection failed:", error.message);
-        return;
-    }
-
-    console.log("Successfully connected to MySQL!");
-
-    connection.query("SELECT VERSION() AS version", (error, results) => {
-        if (error) 
-        {
-            console.error("Query failed:", error.message);
-        } 
-        else 
-        {
-            console.log("MySQL Version:", results[0].version);
-        }
-
-        connection.end();
-    });
-});
+module.exports = pool;
