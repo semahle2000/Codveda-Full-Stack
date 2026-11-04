@@ -1,12 +1,19 @@
 {
   "name": "codveda-full-stack",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Full Stack Development Internship projects - Codveda Technologies",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node --watch server.js"
   },
-  "keywords": [],
+  "keywords": [
+    "nodejs",
+    "express",
+    "mysql",
+    "rest-api",
+    "codveda"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
