@@ -37,7 +37,39 @@ app.get("/api/products", async (req, res) => {
         });
     }
 });
+// ===================================
+// GET DASHBOARD STATISTICS
+// ===================================
 
+app.get("/api/dashboard/stats", async (req, res) => {
+    try {
+        const [results] = await pool.query(`
+            SELECT
+                COUNT(*) AS total_products,
+                COUNT(DISTINCT category) AS total_categories,
+                COALESCE(SUM(price * quantity), 0) AS inventory_value,
+                COALESCE(
+                    SUM(CASE WHEN quantity < 5 THEN 1 ELSE 0 END),
+                    0
+                ) AS low_stock
+            FROM products
+        `);
+
+        res.status(200).json({
+            totalProducts: results[0].total_products,
+            totalCategories: results[0].total_categories,
+            inventoryValue: Number(results[0].inventory_value),
+            lowStock: results[0].low_stock
+        });
+
+    } catch (error) {
+        console.error("Dashboard statistics error:", error.message);
+
+        res.status(500).json({
+            message: "Failed to retrieve dashboard statistics"
+        });
+    }
+});
 // ===================================
 // GET ONE PRODUCT BY ID
 // ===================================
@@ -80,11 +112,13 @@ app.get("/api/products/:id", async (req, res) => {
 
 app.post("/api/products", async (req, res) => {
     try {
-        const { name, price, quantity } = req.body;
+        const { name, category, price, quantity } = req.body;
 
         if (
             typeof name !== "string" ||
             name.trim() === "" ||
+            typeof category !== "string" ||
+            category.trim() === "" ||
             price === undefined ||
             quantity === undefined ||
             !Number.isFinite(Number(price)) ||
@@ -93,17 +127,18 @@ app.post("/api/products", async (req, res) => {
             Number(quantity) < 0
         ) {
             return res.status(400).json({
-                message: "Please provide a valid name, price and quantity."
+                message: "Please provide a valid name, category, price and quantity."
             });
         }
 
         const sql = `
-            INSERT INTO products (name, price, quantity)
-            VALUES (?, ?, ?)
+            INSERT INTO products (name, category, price, quantity)
+            VALUES (?, ?, ?, ?)
         `;
 
         const [result] = await pool.query(sql, [
             name.trim(),
+            category.trim(),
             price,
             quantity
         ]);
@@ -129,7 +164,7 @@ app.post("/api/products", async (req, res) => {
 app.put("/api/products/:id", async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, price, quantity } = req.body;
+        const { name, category, price, quantity } = req.body;
 
         if (!Number.isInteger(Number(id)) || Number(id) < 1) {
             return res.status(400).json({
@@ -140,6 +175,8 @@ app.put("/api/products/:id", async (req, res) => {
         if (
             typeof name !== "string" ||
             name.trim() === "" ||
+            typeof category !== "string" ||
+            category.trim() === "" ||
             price === undefined ||
             quantity === undefined ||
             !Number.isFinite(Number(price)) ||
@@ -148,18 +185,19 @@ app.put("/api/products/:id", async (req, res) => {
             Number(quantity) < 0
         ) {
             return res.status(400).json({
-                message: "Please provide a valid name, price and quantity."
+                message: "Please provide a valid name, category, price and quantity."
             });
         }
 
         const sql = `
             UPDATE products
-            SET name = ?, price = ?, quantity = ?
+            SET name = ?, category = ?, price = ?, quantity = ?
             WHERE id = ?
         `;
 
         const [result] = await pool.query(sql, [
             name.trim(),
+            category.trim(),
             price,
             quantity,
             id

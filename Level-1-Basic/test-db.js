@@ -7,8 +7,8 @@ async function testConnection() {
         console.log("Successfully connected to MySQL!");
         console.log("Products:", results);
 
-    } catch (error) {
-        console.error("Database error:", error.message);
+    }catch (error) {
+    console.error("Database error details:", error);
 
     } finally {
         await pool.end();
