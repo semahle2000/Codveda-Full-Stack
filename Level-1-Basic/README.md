@@ -195,7 +195,7 @@ Create a `.env` file in the project root:
 ```
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=your_mysql_password
+DB_PASSWORD=mypassword
 DB_NAME=codveda_db
 ```
 
