@@ -527,6 +527,6 @@ Some possible additions include:
 
 Built as part of the Codveda Technologies Full Stack Development Internship.
 
-**GitHub Repository:**[h**GitHub Repository:](https://github.com/semahle2000/Codveda-Full-Stack)**
+**GitHub Repository:**
 
 [https://github.com/semahle2000/Codveda-Full-Stack](https://github.com/semahle2000/Codveda-Full-Stack)
